@@ -87,6 +87,8 @@ section{padding:100px 64px;position:relative;z-index:2;}
 .proj-desc{font-size:.79rem;color:var(--gray);line-height:1.8;margin-bottom:20px;font-weight:300;}
 .proj-stack{display:flex;flex-wrap:wrap;gap:7px;}
 .proj-tag{background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);border-radius:5px;padding:3px 10px;font-size:.62rem;color:var(--cyan);letter-spacing:.06em;font-family:'JetBrains Mono',monospace;}
+.proj-card.featured{border-color:rgba(167,139,250,.25);background:rgba(124,58,237,.09);}
+.proj-card.featured .proj-num{color:rgba(167,139,250,.2);}
 .edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:32px;}
 .edu-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:28px;transition:all .3s;}
 .edu-card:hover{border-color:var(--border);transform:translateY(-3px);}
@@ -233,6 +235,7 @@ footer{text-align:center;padding:28px 64px;border-top:1px solid var(--border2);f
       <div class="exp-right">
         <div class="exp-role">IAM Engineer</div>
         <ul class="exp-bullets">
+          <li>Built <strong>Claude AI SSO Gateway</strong> at claude.freshworks.com — Next.js app on AWS ECS Fargate enforcing Entra ID SAML auth, VPN/IP allowlist, and Azure AD assignment checks before granting access to claude.ai; Chrome extension silently redirects direct visits to the gateway with full audit logging</li>
           <li>Integrated <strong>500+ SSO (SAML/OIDC) & SCIM provisioning</strong> across enterprise SaaS platforms — eliminating password-based auth org-wide</li>
           <li>Migrated <strong>10+ apps from Okta to Azure Entra ID</strong> with zero disruption — 60% faster onboarding & reduced vendor costs</li>
           <li>Automated full <strong>JML lifecycle</strong> via Azure Automation + PowerShell + Graph API — 100% manual provisioning eliminated</li>
@@ -287,8 +290,18 @@ footer{text-align:center;padding:28px 64px;border-top:1px solid var(--border2);f
   <div class="s-label">Featured Builds</div>
   <h2 class="s-title rev">Key<br><em>Automations</em></h2>
   <div class="proj-grid">
-    <div class="proj-card rev">
+    <div class="proj-card featured rev">
       <div class="proj-num">01</div>
+      <div class="proj-title">Claude AI SSO Gateway — claude.freshworks.com</div>
+      <div class="proj-desc">Built a branded, secure access gateway that restricts Claude AI to authorized Freshworks employees only. Employees visit claude.freshworks.com, authenticate via Freshworks Microsoft SSO (Entra ID / SAML), and are verified against Azure AD assignment + VPN/IP allowlist before being redirected to claude.ai. A Chrome extension silently enforces the flow by redirecting direct claude.ai visits back to the gateway. Every login is logged with email and timestamp for audit purposes. Deployed as a Next.js app on AWS ECS Fargate behind an ALB with HTTPS, with CloudWatch for monitoring.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">Next.js</span><span class="proj-tag">Azure Entra ID</span><span class="proj-tag">SAML SSO</span>
+        <span class="proj-tag">AWS ECS Fargate</span><span class="proj-tag">AWS ALB</span><span class="proj-tag">Docker</span>
+        <span class="proj-tag">Chrome Extension</span><span class="proj-tag">CloudWatch</span><span class="proj-tag">VPN IP Allowlist</span>
+      </div>
+    </div>
+    <div class="proj-card rev">
+      <div class="proj-num">02</div>
       <div class="proj-title">Claude AI Enterprise Security Framework — Freshworks</div>
       <div class="proj-desc">Designed and deployed a 4-layer enterprise security framework for Claude Cowork & Claude Code across 7,000+ devices (5,000 macOS via JAMF + 2,000 Windows via Intune). Covers identity controls (Azure AD Conditional Access), OS-level restrictions, network inspection, and XDR detection (Cortex XDR). Blocks shadow AI, enforces TLS inspection on all Claude traffic, and prevents data exfiltration via USB, clipboard, and screen capture — scoped per user group.</div>
       <div class="proj-stack">
@@ -298,37 +311,37 @@ footer{text-align:center;padding:28px 64px;border-top:1px solid var(--border2);f
       </div>
     </div>
     <div class="proj-card rev">
-      <div class="proj-num">02</div>
+      <div class="proj-num">03</div>
       <div class="proj-title">Workday → Entra ID Offboarding Pipeline</div>
       <div class="proj-desc">Production-grade offboarding integrating Workday SOAP API with Azure Entra ID via Logic Apps. Processed 500 users in 45 minutes — handles full pagination, multi-path user lookup (employee ID → email fallback), idempotency controls, and JSON audit logging for SOC 2 compliance.</div>
       <div class="proj-stack"><span class="proj-tag">Logic Apps</span><span class="proj-tag">Workday SOAP API</span><span class="proj-tag">Entra ID</span><span class="proj-tag">Azure Blob</span></div>
     </div>
     <div class="proj-card rev">
-      <div class="proj-num">03</div>
+      <div class="proj-num">04</div>
       <div class="proj-title">Immediate Termination Automation</div>
       <div class="proj-desc">Full JML offboarding via Azure Automation + PowerShell + Graph API. Removes all groups & licenses, forces logout across all Slack and Gmail sessions on every device — completed per user in under 2 minutes vs hours manually.</div>
       <div class="proj-stack"><span class="proj-tag">PowerShell</span><span class="proj-tag">Graph API</span><span class="proj-tag">Azure Automation</span><span class="proj-tag">M365</span></div>
     </div>
     <div class="proj-card rev">
-      <div class="proj-num">04</div>
+      <div class="proj-num">05</div>
       <div class="proj-title">Salesforce → Real-Time Access Revocation</div>
       <div class="proj-desc">Event-driven pipeline: Salesforce → Secure HTTPS → Azure Logic Apps → Entra ID. Revokes access on business events in under 30 seconds. Built with idempotency controls via Azure Blob Storage for safe bulk reprocessing.</div>
       <div class="proj-stack"><span class="proj-tag">Salesforce</span><span class="proj-tag">Logic Apps</span><span class="proj-tag">REST API</span><span class="proj-tag">Entra ID</span></div>
     </div>
     <div class="proj-card rev">
-      <div class="proj-num">05</div>
+      <div class="proj-num">06</div>
       <div class="proj-title">Bynder Access Automation via REST API</div>
       <div class="proj-desc">Dynamic onboarding & offboarding for Bynder DAM via REST API — since SCIM was unavailable. Access provisioned and revoked automatically based on Azure AD group membership, eliminating all manual access requests.</div>
       <div class="proj-stack"><span class="proj-tag">REST API</span><span class="proj-tag">Logic Apps</span><span class="proj-tag">Entra ID Groups</span><span class="proj-tag">Postman</span></div>
     </div>
     <div class="proj-card rev">
-      <div class="proj-num">06</div>
+      <div class="proj-num">07</div>
       <div class="proj-title">Password Expiry Alert via Slack</div>
       <div class="proj-desc">Proactive password expiry notification system via Microsoft Graph API — scans all accounts, identifies upcoming expirations, and sends personalized Slack DMs directly to users. Zero manual intervention required.</div>
       <div class="proj-stack"><span class="proj-tag">Graph API</span><span class="proj-tag">PowerShell</span><span class="proj-tag">Slack API</span><span class="proj-tag">Azure Automation</span></div>
     </div>
     <div class="proj-card rev">
-      <div class="proj-num">07</div>
+      <div class="proj-num">08</div>
       <div class="proj-title">Okta → Azure Entra ID Migration</div>
       <div class="proj-desc">Migrated 10+ enterprise apps from Okta to Azure Entra ID with zero business disruption. Standardized SSO (SAML/OIDC) & SCIM configs — reducing onboarding setup time per app by ~60% and centralizing the identity stack.</div>
       <div class="proj-stack"><span class="proj-tag">Okta</span><span class="proj-tag">Entra ID</span><span class="proj-tag">SAML</span><span class="proj-tag">OIDC</span><span class="proj-tag">SCIM</span></div>
